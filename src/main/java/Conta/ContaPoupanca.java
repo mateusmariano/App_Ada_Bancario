@@ -14,7 +14,7 @@ public final class ContaPoupanca extends Conta{
             @JsonProperty("numero") String numero,
             @JsonProperty("saldo") double saldo) {
         super(numero, saldo);
-        this.taxaRendimento = 0.5;
+        this.taxaRendimento = 0.05;
     }
 
     public double getTaxaRendimento() {
@@ -28,7 +28,7 @@ public final class ContaPoupanca extends Conta{
     @Override
     public void depositar(double valor) {
         if(valor > 0){
-            this.setSaldo(this.getSaldo() + valor + (valor * 0.05));
+            this.setSaldo(this.getSaldo() + valor + (valor * taxaRendimento));
             System.out.println("Deposito realizado com sucesso");
         } else {
             System.out.println("Não foi possível realizar o depósito");
